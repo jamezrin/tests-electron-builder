@@ -1,0 +1,1 @@
+{"version":3,"file":"popupPreload.js","sourceRoot":"","sources":["../../../src/desktop/renderer/popupPreload.ts"],"names":[],"mappings":";;;;;;;;;AAAA,gEAAiD;AAEjD,MAAM,CAAC,MAAM,GAAG;IACf,WAAW,EAAE,CAAC,GAAQ,EAAE,MAAc,EAAE,EAAE;QACzC,SAAS,CAAC,mBAAmB,CAAC,qBAAqB,EAAE,GAAG,CAAC,CAAA;IAC1D,CAAC;CACD,CAAA"}

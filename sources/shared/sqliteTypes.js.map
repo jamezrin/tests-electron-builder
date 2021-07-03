@@ -1,0 +1,1 @@
+{"version":3,"file":"sqliteTypes.js","sourceRoot":"","sources":["../../../src/desktop/shared/sqliteTypes.ts"],"names":[],"mappings":";;AAkQA,SAAgB,aAAa,CAAC,MAAoB;IACjD,OAAO,CACN,MAAM,CAAC,IAAI,KAAK,OAAO;QACvB,MAAM,CAAC,IAAI,KAAK,aAAa;QAC7B,MAAM,CAAC,IAAI,KAAK,oBAAoB,CACpC,CAAA;AACF,CAAC;AAND,sCAMC;AASD,SAAgB,eAAe,CAC9B,KAAmC;IAEnC,OAAO,KAAK,CAAA;AACb,CAAC;AAJD,0CAIC"}

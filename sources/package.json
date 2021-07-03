@@ -1,0 +1,35 @@
+{
+  "name": "notion-app-enhanced",
+  "version": "2.0.16",
+  "main": "./main/main.js",
+  "author": "Notion Labs, Incorporated",
+  "description": "Notion desktop application",
+  "dependencies": {
+    "@types/ws": "7.4.0",
+    "better-sqlite3": "git://github.com/makenotion/better-sqlite3#3f546d308f8308ace6572b8562c81e11d92b15e3",
+    "bufferutil": "4.0.2",
+    "cld": "2.7.0",
+    "electron-log": "4.1.1",
+    "electron-updater": "4.1.2",
+    "electron-window-state": "5.0.3",
+    "fs-extra": "8.1.0",
+    "get-port": "5.1.1",
+    "isomorphic-fetch": "2.2.1",
+    "lodash": "4.17.15",
+    "md5": "2.3.0",
+    "notion-intl": "file:shared/notion-intl",
+    "patch-package": "6.2.0",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "react-intl": "3.11.0",
+    "url": "0.11.0",
+    "ws": "7.4.1",
+    "keyboardevent-from-electron-accelerator": "^2.0.0"
+  },
+  "files": [
+    "*.js",
+    "*.html"
+  ],
+  "homepage": "https://github.com/jamezrin/notion-repackaged",
+  "repository": "https://github.com/jamezrin/notion-repackaged"
+}

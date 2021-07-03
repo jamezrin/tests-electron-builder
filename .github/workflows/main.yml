@@ -1,0 +1,66 @@
+name: Playground
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  playground:
+    name: Playground
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [windows, linux, macos]
+        include:
+          - target: windows
+            os: windows-latest
+          - target: linux
+            os: ubuntu-latest
+          - target: macos
+            os: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install Linux build dependencies
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo apt-get install --no-install-recommends -y libopenjp2-tools rpm libarchive-tools
+      - name: Setup pnpm and yalc
+        run: |
+          npm install -g pnpm
+          pnpm i yalc -g
+      - name: Install dependencies
+        working-directory: sources
+        run: npm install
+      - name: Run patch-package
+        working-directory: sources
+        run: npx patch-package
+      - name: Install electron
+        working-directory: sources
+        run: npm install electron@11 electron-builder --save-dev
+      - name: Setup electron-builder
+        shell: bash
+        run: |
+          git clone https://github.com/jamezrin/electron-builder
+          pushd ./electron-builder
+          pnpm install
+          pnpm compile
+          find packages/ -type d -maxdepth 1 -print0 | xargs -0 -L1 sh -c 'cd "$0" && yalc push'
+          popd
+      - name: Link yalc packages
+        working-directory: sources
+        run: yalc link app-builder-lib builder-util builder-util-runtime dmg-builder electron-builder electron-publish electron-builder-squirrel-windows electron-forge-maker-appimage electron-forge-maker-nsis electron-forge-maker-nsis-web electron-forge-maker-snap electron-updater
+      - name: Run electron-builder
+        working-directory: sources
+        run: >-
+          node_modules/.bin/electron-builder
+          --${{ matrix.target }}
+          -c.asar=false
+          -c.productName="Notion Enhanced"
+          -p never
+          --config ../electron-builder.yaml
